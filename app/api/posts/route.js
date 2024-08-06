@@ -2,7 +2,7 @@ import connectMongoDB from "@/libs/mongodb";
 import Post from "@/models/post";
 import { NextResponse } from "next/server";
 
-// creating post API Route
+// Creating post API Route
 
 export async function POST(req) {
 
@@ -13,11 +13,22 @@ export async function POST(req) {
     
 }
 
-//getting posts API Route
+// Getting posts API Route
 
 export async function GET() {
     await connectMongoDB();
     const posts= await Post.find();
     return NextResponse.json({posts})
+    
+}
+
+// Deleteing posts API Route
+
+export async function DELETE(req) {
+    const id=req.nextUrl.searchParams.get("id")
+    await connectMongoDB();
+    await Post.findByIdAndDelete(id);
+    return NextResponse.json({message:"Post Deleted"},{status:200});
+
     
 }
