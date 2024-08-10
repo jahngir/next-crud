@@ -18,6 +18,6 @@ export async function PUT(req,{params}) {
 export async function GET(req,{params}) {
     const {id}=params;
     await connectMongoDB();
-    const topic = await Post.findOne({_id:id});
-    return NextResponse.json({topic},{satus:200});    
+    const post = await Post.findOne({_id:id});
+    return NextResponse.json({post},{satus:200});    
 }

@@ -1,5 +1,10 @@
+"use client";
+import { useState } from "react";
 
-const page = () => {
+const createPost = () => {
+  const [title,setTitle]= useState("");
+  const [description,setDescription]= useState("");
+  
   return (
     <form action="" className="flex flex-col gap-4">
         
@@ -10,4 +15,4 @@ const page = () => {
   )
 }
 
-export default page
+export default createPost
